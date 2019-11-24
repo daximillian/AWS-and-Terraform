@@ -4,8 +4,8 @@
 sudo apt-get update
 sudo apt-get --assume-yes install nginx
 sudo service nginx start
-SERVER_IP="$(curl ifconfig.me/ip)"
-echo "<html><head><title>OpsSchool Rules</title></head><body><h1>OpsSchool Rules</h1><p>Web Server IP:"${SERVER_IP}"</p></body></html>" | sudo tee /var/www/html/index.html 
+HOSTNAME="$(curl --silent http://169.254.169.254/latest/meta-data/hostname)"
+echo "<html><head><title>OpsSchool Rules</title></head><body><h1>OpsSchool Rules</h1><p>Hostname:"${HOSTNAME}"</p></body></html>" | sudo tee /var/www/html/index.html 
 
 # install s3cmd
 sudo apt --assume-yes install python-pip
